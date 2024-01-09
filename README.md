@@ -1,6 +1,6 @@
 # Sean Lam's Weather App
 
-This project is an app for checking app by entering city, province or country. I have used [OpenWeatherMap](https://openweathermap.org/) API to fetch the weather data.
+This project is an app for checking weather by entering city, province or country. I have used [OpenWeatherMap](https://openweathermap.org/) API to fetch the weather data.
 Please try to search for your city and see the result!
 
 ## Contact
