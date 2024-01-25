@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import PlaceIcon from '@mui/icons-material/Place'
-import SearchIcon from '@mui/icons-material/Search'
-import WaterIcon from '@mui/icons-material/Water'
-import AirIcon from '@mui/icons-material/Air'
+import React, { useState } from 'react';
+import PlaceIcon from '@mui/icons-material/Place';
+import SearchIcon from '@mui/icons-material/Search';
+import WaterIcon from '@mui/icons-material/Water';
+import AirIcon from '@mui/icons-material/Air';
 
 const WeatherApp = () => {
-    const [city, setCity] = useState('')
-    const [weatherData, setWeatherData] = useState(null)
-    const [error, setError] = useState(null)
+    const [city, setCity] = useState('');
+    const [weatherData, setWeatherData] = useState(null);
+    const [error, setError] = useState(null);
   
     const handleSearch = async () => {
-      const APIKey = '2ce18ebf1fd85f935f04c47c23c777a4'
+      const APIKey = process.env.REACT_APP_API_KEY;
   
-      if (city === '') return
+      if (city === '') return;
   
       try {
         const response = await fetch(
@@ -28,9 +28,9 @@ const WeatherApp = () => {
             setError(null)
         }
       } catch (error) {
-        console.error('Error fetching weather data:', error)
+        console.error('Error fetching weather data:', error);
       }
-    }
+    };
 
     return (
         <div className='bg-[#06283D] h-screen flex flex-col justify-center items-center'>
@@ -83,4 +83,4 @@ const WeatherApp = () => {
     )
 }
 
-export default WeatherApp
+export default WeatherApp;
