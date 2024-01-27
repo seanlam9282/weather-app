@@ -4,9 +4,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import WaterIcon from '@mui/icons-material/Water';
 import AirIcon from '@mui/icons-material/Air';
 
-const APIKey = process.env.REACT_APP_API_KEY;
-
 const WeatherApp = () => {
+    const APIKey = process.env.REACT_APP_API_KEY;
     const [city, setCity] = useState('CALGARY');
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
@@ -20,7 +19,7 @@ const WeatherApp = () => {
             setWeatherData(jsonInitial);
         }
         fetchInitialData();
-    }, [])
+    }, [city]);
 
     const handleSearch = async () => {
       if (city === '') return;
