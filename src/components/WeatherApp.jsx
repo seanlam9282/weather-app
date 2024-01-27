@@ -5,28 +5,21 @@ import WaterIcon from '@mui/icons-material/Water';
 import AirIcon from '@mui/icons-material/Air';
 
 const WeatherApp = () => {
-    const APIKey = '2ce18ebf1fd85f935f04c47c23c777a4';
+    const APIKey = process.env.REACT_APP_API_KEY;
     const [city, setCity] = useState('CALGARY');
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
     
-    // const fetchInitialData = async () => {
-    //     try {
-    //         console.log('Before initial fetch');
-    //         const responseInitial = await fetch(
-    //             `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
-    //         );
-    //         console.log('After initial fetch');
-    //         const jsonInitial = await responseInitial.json();
-    //         setWeatherData(jsonInitial);
-    //     } catch (error) {
-    //         console.error('Error fetching initial weather data:', error);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     fetchInitialData();
-    // }, []);
+    useEffect(() => {
+        const fetchInitialData = async () => {
+            const responseInitial = await fetch(
+                `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
+            );
+            const jsonInitial = await responseInitial.json();
+            setWeatherData(jsonInitial);
+        };
+        fetchInitialData();
+    }, []);
 
     const handleSearch = async () => {
       if (city === '') return;
