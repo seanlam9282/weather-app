@@ -10,17 +10,23 @@ const WeatherApp = () => {
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
     
-    const fetchInitialData = async () => {
-        const responseInitial = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
-        );
-        const jsonInitial = await responseInitial.json();
-        setWeatherData(jsonInitial);
-    }
+    // const fetchInitialData = async () => {
+    //     try {
+    //         console.log('Before initial fetch');
+    //         const responseInitial = await fetch(
+    //             `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
+    //         );
+    //         console.log('After initial fetch');
+    //         const jsonInitial = await responseInitial.json();
+    //         setWeatherData(jsonInitial);
+    //     } catch (error) {
+    //         console.error('Error fetching initial weather data:', error);
+    //     }
+    // }
 
-    useEffect(() => {
-        fetchInitialData();
-    }, []);
+    // useEffect(() => {
+    //     fetchInitialData();
+    // }, []);
 
     const handleSearch = async () => {
       if (city === '') return;
