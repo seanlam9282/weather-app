@@ -5,7 +5,7 @@ import WaterIcon from '@mui/icons-material/Water';
 import AirIcon from '@mui/icons-material/Air';
 
 const WeatherApp = () => {
-    const APIKey = process.env.REACT_APP_API_KEY;
+    const APIKey = '2ce18ebf1fd85f935f04c47c23c777a4';
     const [city, setCity] = useState('CALGARY');
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
