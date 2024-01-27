@@ -44,7 +44,7 @@ const WeatherApp = () => {
 
     return (
         <div className='bg-[#06283D] h-screen flex flex-col justify-center items-center'>
-            <div className='relative w-1/3 h-[95%] bg-white px-7 py-8 rounded-2xl duration-500 ease-out'>
+            <div className='w-4/5 sm:w-4/5 md:w-3/5 lg:w-2/5 xl:w-1/3 h-fit bg-white px-7 py-8 rounded-2xl duration-500 ease-out'>
                 <div className='w-full h-min flex items-center justify-between'>
                     <PlaceIcon className='absolute text-[#06283D] text-3xl translate-x-1'/>
                     <input type='text' placeholder='Enter your location' value={city} onChange={(e) => setCity(e.target.value)} className='w-4/5 text-2xl font-medium uppercase pl-8 placeholder:capitalize' />
@@ -72,18 +72,18 @@ const WeatherApp = () => {
 
                 {weatherData && (
                     <div className='w-full flex justify-between mt-2'>
-                        <div className='flex items-center w-1/2 h-[100px] pl-[20px] justify-start'>
+                        <div className='flex items-center w-full sm:w-1/2 h-[100px] sm:pl-[20px] justify-start sm:justify-center'>
                             <WaterIcon className='text-[#06283D] text-[26px] mr-2 mt-1'/>
-                            <div className='text'>
-                                <span className='text-[#06283D] text-[22px] font-medium'>{weatherData.main.humidity}%</span>
-                                <p className='text-[#06283D] text-[14px] font-medium'>Humidity</p>
+                            <div className='text-[#06283D]'>
+                                <span className='text-[22px] font-medium'>{weatherData.main.humidity}%</span>
+                                <p className='text-[14px] font-medium'>Humidity</p>
                             </div>
                         </div>
-                        <div className='flex items-center w-1/2 h-[100px] pr-[20px] justify-end'>
+                        <div className='flex items-center w-full sm:w-1/2 h-[100px] sm:pr-[20px] justify-end sm:justify-center'>
                             <AirIcon className='text-[#06283D] text-[26px] mr-2 mt-1'/>
-                            <div className='text'>
-                                <span className='text-[#06283D] text-[22px] font-medium'>{parseInt(weatherData.wind.speed)}Km/h</span>
-                                <p className='text-[#06283D] text-[14px] font-medium'>Wind Speed</p>
+                            <div className='text-[#06283D]'>
+                                <span className='text-[22px] font-medium'>{parseInt(weatherData.wind.speed)} Km/h</span>
+                                <p className='text-[14px] font-medium'>Wind Speed</p>
                             </div>
                         </div>
                     </div>

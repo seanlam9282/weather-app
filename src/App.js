@@ -1,4 +1,4 @@
-import WeatherApp from './components/WeatherApp'
+import WeatherApp from './components/WeatherApp';
 
 function App() {
     return (
@@ -6,6 +6,6 @@ function App() {
         <WeatherApp />
       </div>
     );
-}
+};
 
-export default App
+export default App;
