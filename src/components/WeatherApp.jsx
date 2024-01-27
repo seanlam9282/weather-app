@@ -1,31 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PlaceIcon from '@mui/icons-material/Place';
 import SearchIcon from '@mui/icons-material/Search';
 import WaterIcon from '@mui/icons-material/Water';
 import AirIcon from '@mui/icons-material/Air';
 
+const APIKey = process.env.REACT_APP_API_KEY;
+
 const WeatherApp = () => {
-    const [city, setCity] = useState('');
+    const [city, setCity] = useState('CALGARY');
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
-  
+    
+    useEffect(() => {
+        const fetchInitialData = async () => {
+            const responseInitial = await fetch(
+                `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
+            );
+            const jsonInitial = await responseInitial.json();
+            setWeatherData(jsonInitial);
+        }
+        fetchInitialData();
+    }, [])
+
     const handleSearch = async () => {
-      const APIKey = process.env.REACT_APP_API_KEY;
-  
       if (city === '') return;
   
       try {
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
         );
-        const json = await response.json()
+        const json = await response.json();
   
         if (json.cod === '404') {
-            setError('Invalid location!')
-            setWeatherData(null)
+            setError('Invalid location!');
+            setWeatherData(null);
         } else {
-            setWeatherData(json)
-            setError(null)
+            setWeatherData(json);
+            setError(null);
         }
       } catch (error) {
         console.error('Error fetching weather data:', error);
