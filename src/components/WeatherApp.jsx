@@ -10,16 +10,17 @@ const WeatherApp = () => {
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
     
+    const fetchInitialData = async () => {
+        const responseInitial = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
+        );
+        const jsonInitial = await responseInitial.json();
+        setWeatherData(jsonInitial);
+    }
+
     useEffect(() => {
-        const fetchInitialData = async () => {
-            const responseInitial = await fetch(
-                `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
-            );
-            const jsonInitial = await responseInitial.json();
-            setWeatherData(jsonInitial);
-        }
         fetchInitialData();
-    }, [city]);
+    }, []);
 
     const handleSearch = async () => {
       if (city === '') return;
